@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criterion For Me!</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* General Body Styling - Inspired by the soft, natural tones of Before Sunrise cover */
+        /* General Body Styling - Warm, inviting Italian tones */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F8F5EC; /* A very light, warm cream/beige */
+            font-family: 'Inter', sans-serif; /* Default font for the body */
+            background-color: #F0EAD6; /* A soft, warm off-white, like aged parchment */
             display: flex;
             justify-content: center;
             align-items: flex-start; /* Align to top to allow scrolling if content is long */
@@ -21,96 +21,110 @@
         /* Main Container Styling - Clean and inviting, slightly warmer than body */
         .container {
             background-color: #FFFFFF; /* Pure white for crispness */
-            border-radius: 12px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1); /* Softer, slightly larger shadow */
-            padding: 30px;
+            border-radius: 16px; /* Slightly more rounded for a softer look */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+            padding: 35px; /* Increased padding */
             width: 100%;
-            max-width: 800px;
+            max-width: 850px; /* Slightly wider */
             text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 25px; /* Increased gap for more breathing room */
+            gap: 30px; /* Increased gap for more breathing room */
+            border: 1px solid #D4B88C; /* Subtle, warm border */
+        }
+        /* Button Styling - Rich orange, evoking terracotta and sunsets */
+        #findMovieBtn {
+            background-color: #E65100; /* Deep, rich orange */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        #findMovieBtn:hover {
+            background-color: #FF6F00; /* Lighter orange on hover */
+            transform: scale(1.03); /* Subtle scale effect */
         }
         /* Movie Card Styling - Presents movie info elegantly */
         .movie-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-            padding: 25px; /* Slightly more padding */
-            border: 1px solid #E0DED7; /* Softer, muted border */
-            border-radius: 10px; /* Slightly more rounded corners */
-            background-color: #FCFAF8; /* Light cream for card background */
+            gap: 25px; /* Increased gap */
+            margin-top: 25px;
+            padding: 30px; /* More padding */
+            border: 2px solid #C0A070; /* More prominent, warm border */
+            border-radius: 12px; /* Rounded corners */
+            background-color: #FFFDF8; /* Very light cream for card background */
             text-align: left;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Slightly stronger inner shadow */
         }
         .movie-card img {
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 200px;
+            border-radius: 10px; /* More rounded image corners */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); /* Stronger image shadow */
+            max-width: 220px; /* Slightly larger image */
             height: auto;
-            flex-shrink: 0; /* Prevent image from shrinking too much on small screens */
+            flex-shrink: 0;
+            border: 1px solid #E0DED7; /* Subtle border around image */
         }
         .movie-info {
             flex-grow: 1;
+            font-family: 'Playfair Display', serif; /* Font for movie details */
+            color: #4A4A4A; /* Slightly darker text for better contrast */
         }
         .movie-info h2 {
-            font-size: 1.9rem; /* Slightly larger heading */
+            font-size: 2.2rem; /* Larger heading */
             font-weight: 700;
             color: #333;
-            margin-bottom: 12px; /* Increased margin */
+            margin-bottom: 15px; /* Increased margin */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Subtle text shadow */
         }
         .movie-info p {
-            font-size: 1.05rem; /* Slightly larger text */
+            font-size: 1.1rem; /* Slightly larger text */
             color: #555;
-            margin-bottom: 6px;
-            line-height: 1.5;
+            margin-bottom: 8px; /* Increased margin */
+            line-height: 1.6;
         }
         .movie-info p strong {
             color: #222;
         }
         /* Loading Spinner */
         .loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #D97706; /* A warm orange for spinner */
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #E65100; /* Matching orange for spinner */
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 40px; /* Larger spinner */
+            height: 40px;
             animation: spin 1s linear infinite;
-            margin: 20px auto;
-            display: none; /* Hidden by default */
+            margin: 30px auto;
+            display: none;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* Message Box Styling */
+        /* Message Box Styling - Adjusted to new palette */
         .message-box {
-            background-color: #FFFBEB; /* Very light yellow for info/warning */
-            border: 1px solid #FCD34D; /* Muted yellow border */
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 20px;
-            color: #D97706; /* Darker orange text */
+            background-color: #FFF8E1; /* Light yellow-orange for info */
+            border: 1px solid #FFCC80; /* Muted orange border */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 25px;
+            color: #E65100; /* Darker orange text */
             font-weight: 600;
-            display: none; /* Hidden by default */
+            display: none;
             text-align: left;
         }
         .message-box.error {
-            background-color: #FEF2F2; /* Light red for errors */
-            border-color: #FCA5A5; /* Muted red border */
-            color: #DC2626; /* Dark red text */
+            background-color: #FFEBEE; /* Light red for errors */
+            border-color: #FFCDD2; /* Muted red border */
+            color: #D32F2F; /* Dark red text */
         }
 
         /* Responsive adjustments */
         @media (min-width: 640px) {
             .movie-card {
                 flex-direction: row;
-                text-align: left; /* Ensure text aligns left on larger screens */
+                text-align: left;
             }
             .movie-card img {
-                margin-right: 25px; /* Increased margin for spacing */
+                margin-right: 30px; /* More margin for spacing */
             }
         }
     </style>
@@ -118,7 +132,7 @@
 <body class="bg-gray-100 p-4 sm:p-8">
     <div class="container">
         <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">Criterion For Me!</h1>
-        <button id="findMovieBtn" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+        <button id="findMovieBtn" class="text-white font-bold py-3 px-6 rounded-lg shadow-md">
             Discover a Film
         </button>
 
@@ -133,6 +147,8 @@
                 <p><strong>Director:</strong> <span id="movieDirector"></span></p>
                 <p><strong>Year:</strong> <span id="movieYear"></span></p>
                 <p><strong>Country:</strong> <span id="movieCountry"></span></p>
+                <p><strong>Duration:</strong> <span id="movieDuration"></span></p>
+                <p><strong>Genre:</strong> <span id="movieGenre"></span></p>
                 <p><strong>Overview:</strong> <span id="movieOverview"></span></p>
                 <p><strong>Rating:</strong> <span id="movieRating"></span> / 10</p>
             </div>
@@ -1900,6 +1916,7 @@
         ];
 
         let currentMovieIndex = 0; // Keep track of the current movie index
+        let lastDisplayedDirector = null; // Stores the director of the last movie displayed
 
         // Function to display messages to the user
         function showMessage(message, type = 'info') {
@@ -1913,28 +1930,55 @@
             messageBox.style.display = 'none';
         }
 
+        // Function to format runtime from minutes to Hh Mmin
+        function formatRuntime(minutes) {
+            if (minutes === null || minutes === undefined) return 'N/A';
+            const h = Math.floor(minutes / 60);
+            const m = minutes % 60;
+            return `${h}h ${m}min`;
+        }
+
+        // Function to shuffle an array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+            }
+        }
+
         // Function to find and display the next available movie
         async function findNextAvailableMovie() {
             hideMessage();
             loadingSpinner.style.display = 'block';
             movieDisplay.classList.add('hidden');
 
-            const maxAttempts = criterionMovies.length;
+            const initialStartIndex = currentMovieIndex;
             let attempts = 0;
+            let foundUniqueMovie = false;
 
-            while (attempts < maxAttempts) {
+            while (attempts < criterionMovies.length) {
                 const movie = criterionMovies[currentMovieIndex];
                 const [title, directorFromList, countryFromList, yearFromList] = movie;
 
-                // Display basic info from the list immediately
+                // Check if the current movie's director is the same as the last one
+                // and if we have tried less than the total number of movies to find a unique one.
+                if (directorFromList === lastDisplayedDirector && attempts < criterionMovies.length) {
+                    currentMovieIndex = (currentMovieIndex + 1) % criterionMovies.length;
+                    attempts++;
+                    continue; // Skip this movie and try the next one
+                }
+
+                // Display basic info from the list immediately (as placeholders)
                 movieTitle.textContent = title;
-                movieOriginalTitle.textContent = title; // Default to title if original not found
+                movieOriginalTitle.textContent = title;
                 movieDirector.textContent = directorFromList;
                 movieYear.textContent = yearFromList;
                 movieCountry.textContent = countryFromList;
+                movieDuration.textContent = 'Searching...';
+                movieGenre.textContent = 'Searching...';
                 movieOverview.textContent = 'Searching for details...';
                 movieRating.textContent = 'N/A';
-                moviePoster.src = `https://placehold.co/200x300/cccccc/333333?text=Loading...`;
+                moviePoster.src = `https://placehold.co/220x330/cccccc/333333?text=Loading...`; // Updated placeholder size
                 movieDisplay.classList.remove('hidden');
 
                 try {
@@ -1947,7 +1991,7 @@
                         console.warn(`TMDb search for "${title}" (${yearFromList}) failed: ${searchResponse.status} ${searchResponse.statusText}. Trying next movie.`);
                         currentMovieIndex = (currentMovieIndex + 1) % criterionMovies.length;
                         attempts++;
-                        continue; // Skip to next iteration (next movie)
+                        continue;
                     }
 
                     const searchData = await searchResponse.json();
@@ -1963,66 +2007,81 @@
                             console.warn(`TMDb details fetch for "${title}" (${yearFromList}) failed: ${detailsResponse.status} ${detailsResponse.statusText}. Trying next movie.`);
                             currentMovieIndex = (currentMovieIndex + 1) % criterionMovies.length;
                             attempts++;
-                            continue; // Skip to next iteration (next movie)
+                            continue;
                         }
                         const detailsData = await detailsResponse.json();
 
                         // 3. Fetch credits to get director information
                         const creditsUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${TMDB_API_KEY}`;
                         const creditsResponse = await fetch(creditsUrl);
-                        let directorName = directorFromList; // Default to list director
+                        let fetchedDirectorName = directorFromList; // Default to list director
 
                         if (creditsResponse.ok) {
                             const creditsData = await creditsResponse.json();
                             const director = creditsData.crew.find(person => person.job === 'Director');
                             if (director) {
-                                directorName = director.name;
+                                fetchedDirectorName = director.name;
                             }
                         } else {
                             console.warn(`TMDb credits fetch for "${title}" (${yearFromList}) failed: ${creditsResponse.status} ${creditsResponse.statusText}. Using director from list.`);
                         }
 
+                        // Check again for director uniqueness after fetching the actual director name
+                        if (fetchedDirectorName === lastDisplayedDirector && attempts < criterionMovies.length) {
+                             currentMovieIndex = (currentMovieIndex + 1) % criterionMovies.length;
+                             attempts++;
+                             continue;
+                        }
+
+
                         // Update the display with fetched data
                         movieTitle.textContent = detailsData.title || title;
                         movieOriginalTitle.textContent = detailsData.original_title || title;
-                        movieDirector.textContent = directorName;
+                        movieDirector.textContent = fetchedDirectorName;
                         movieYear.textContent = detailsData.release_date ? detailsData.release_date.substring(0, 4) : yearFromList;
                         movieCountry.textContent = detailsData.production_countries && detailsData.production_countries.length > 0 ? detailsData.production_countries[0].name : countryFromList;
                         movieOverview.textContent = detailsData.overview || 'No overview available.';
                         movieRating.textContent = detailsData.vote_average ? detailsData.vote_average.toFixed(1) : 'N/A';
+                        movieDuration.textContent = formatRuntime(detailsData.runtime);
+                        movieGenre.textContent = detailsData.genres && detailsData.genres.length > 0 ? detailsData.genres.map(g => g.name).join(', ') : 'N/A';
 
                         const posterPath = detailsData.poster_path;
                         if (posterPath) {
                             moviePoster.src = `https://image.tmdb.org/t/p/w500${posterPath}`;
                             moviePoster.onerror = () => {
-                                moviePoster.src = `https://placehold.co/200x300/cccccc/333333?text=No+Poster`;
+                                moviePoster.src = `https://placehold.co/220x330/cccccc/333333?text=No+Poster`;
                             };
                         } else {
-                            moviePoster.src = `https://placehold.co/200x300/cccccc/333333?text=No+Poster`;
+                            moviePoster.src = `https://placehold.co/220x330/cccccc/333333?text=No+Poster`;
                         }
 
                         movieDisplay.classList.remove('hidden');
                         loadingSpinner.style.display = 'none';
+                        lastDisplayedDirector = fetchedDirectorName; // Update the last displayed director
                         currentMovieIndex = (currentMovieIndex + 1) % criterionMovies.length; // Prepare for next click
+                        foundUniqueMovie = true;
                         return; // Successfully found and displayed a movie, exit function
                     } else {
                         console.warn(`No TMDb results found for "${title}" (${yearFromList}). Trying next movie.`);
                         currentMovieIndex = (currentMovieIndex + 1) % criterionMovies.length;
                         attempts++;
-                        continue; // Skip to next iteration (next movie)
+                        continue;
                     }
                 } catch (error) {
                     console.error(`An unexpected error occurred while fetching details for "${title}" (${yearFromList}):`, error);
                     currentMovieIndex = (currentMovieIndex + 1) % criterionMovies.length;
                     attempts++;
-                    continue; // Skip to next iteration (next movie)
+                    continue;
                 }
             }
 
             // If the loop finishes, it means no movie was found after trying all of them
-            showMessage('Could not find details for any of the Criterion Collection movies from TMDb after trying all options. Please check your API key or the movie list.', 'error');
-            loadingSpinner.style.display = 'none';
-            movieDisplay.classList.add('hidden');
+            // Or, if it couldn't find a *unique* director after many attempts, it will display the last attempted movie.
+            if (!foundUniqueMovie) {
+                showMessage('Could not find a unique movie or details for any of the Criterion Collection movies from TMDb after trying all options. Please check your API key or the movie list.', 'error');
+                loadingSpinner.style.display = 'none';
+                movieDisplay.classList.add('hidden');
+            }
         }
 
         // Event listener for the button
@@ -2030,7 +2089,8 @@
 
         // Initial load: find a random movie automatically
         document.addEventListener('DOMContentLoaded', () => {
-            // Start from a random index for the first load
+            // Shuffle the movies once on load to ensure better randomness and reduce consecutive directors initially
+            shuffleArray(criterionMovies);
             currentMovieIndex = Math.floor(Math.random() * criterionMovies.length);
             findNextAvailableMovie();
         });
